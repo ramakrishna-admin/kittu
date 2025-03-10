@@ -1,0 +1,11 @@
+---
+- name: Copy directory from server to node machine
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy directory to remote machine
+      synchronize:
+        src: /var/lib/jenkins/workspace/docker
+        dest: /home/king
+        recursive: yes
+
