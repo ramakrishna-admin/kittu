@@ -1,0 +1,8 @@
+---
+- name: Build and Run Node.js App in Docker
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Build Docker image
+      command: docker build -t first /home/kittu/docker/
