@@ -1,6 +1,6 @@
 ---
 - name: Build and Run Node.js App in Docker
-  hosts: web
+  hosts: all
   become: true
 
   tasks:
