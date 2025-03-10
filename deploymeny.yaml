@@ -1,13 +1,20 @@
-
 ---
-- name: Create Docker image in server machine using file from node
+- name: Copy files from one server to another
   hosts: 34.204.200.31
-  gather_facts: no
   become: yes
 
+  vars:
+    source_server: "54.234.29.82"
+    source_path: "/var/lib/jenkins/workspace/kittu"
+    destination_path: "/home/kittu"
+
   tasks:
-  - name: Copy Dockerfile from node to server machine
+  - name: Copy files from source server
     synchronize:
-      src: /var/lib/jenkins/workspace/kittu
-      dest: /home/project
-      mode: pull
+      mode: push
+      src: "{{ /var/lib/jenkins/workspace/kittu }}"
+      dest: "{{ /home/kittu }}"
+      rsync_path: "rsync"
+      delete: yes
+    delegate_to: "{{ 54.234.29.82 }}"
+
