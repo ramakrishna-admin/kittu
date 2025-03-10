@@ -9,7 +9,5 @@
         dest: /home/king
         recursive: yes
         
-    - name: Build Docker image
-      command: docker build -t first /home/king/docker
-
+    
 
